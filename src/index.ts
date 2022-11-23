@@ -2,8 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
 import connect from './mongo';
-import usersRouter from './controllers/users';
+import registerRouter from './controllers/register';
 import { handleErrors } from './midlewares/handleErrors';
+import loginRouter from './controllers/login';
+import userRouter from './controllers/user';
 
 const app = express();
 
@@ -12,7 +14,9 @@ app.use(cors());
 dotenv.config();
 
 const { PORT } = process.env;
-app.use('/api/users', usersRouter);
+app.use('/api/register', registerRouter);
+app.use('/api/login', loginRouter);
+app.use('/api/user', userRouter);
 
 app.use(handleErrors);
 

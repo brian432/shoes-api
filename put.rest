@@ -1,0 +1,7 @@
+PUT http://localhost:3001/api/user/637d61a1429ce692e556786d 
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2Q2MWExNDI5Y2U2OTJlNTU2Nzg2ZCIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NjkxNjE2MzEsImV4cCI6MTY2OTQyMDgzMX0.yNyrKZkbi1MMm_CKPyhoPGTA9lHUd1H_Cu7laSrH7o0
+
+{
+    "email":"dsadas"
+}
