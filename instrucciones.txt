@@ -12,6 +12,8 @@ Inicializamos el proyecto
     npm install --save-dev cross-env
     npm install bcrypt --save @types/bcrypt
     npm install --save-dev ts-node-dev
+    npm install 
+    npm i --save-dev @types/jsonwebtoken
 3)importaciones de cada dependencias
 
     import express from 'express';

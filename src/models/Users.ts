@@ -7,15 +7,19 @@ const UserSchema = new Schema<UserTypes>({ //Creamos el esquema con el tipo User
         required: true,
         unique: true
     },
-    name: {
+    email: {
         type: String,
         required: true
     },
     passwordHash: {
         type: String,
         required: true
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
     }
-});
+}, { timestamps: true });
 
 UserSchema.set('toJSON', {
     transform: (_document, returnedObject: UserReturnedObject) => {
