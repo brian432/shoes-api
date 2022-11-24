@@ -1,0 +1,8 @@
+POST http://localhost:3001/api/register
+Content-Type: application/json
+
+{
+    "username":"Brian2",
+    "email":"dsadas@dsadsa.com",
+    "password":"123456"
+}

@@ -21,13 +21,11 @@ const UserSchema = new Schema<UserTypes>({ //Creamos el esquema con el tipo User
     }
 }, { timestamps: true });
 
-UserSchema.set('toJSON', {
+UserSchema.set('toJSON', { //Al retornar el json luego de agregar un usuario, modificamos este retorno eliminando el password y propiedades que no necesitamos devolver
     transform: (_document, returnedObject: UserReturnedObject) => {
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        returnedObject.id = `${returnedObject._id}`;
+        returnedObject.id = `${returnedObject._id}`; //creamos una nueva propiedad que almacena el ._id de mongoDB transformada a string
         delete returnedObject._id;
         delete returnedObject.__v;
-        // Eliminamos el password para que no se devuelva y exponga la contraseña
         delete returnedObject.passwordHash;
     }
 });

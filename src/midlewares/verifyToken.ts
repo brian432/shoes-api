@@ -69,7 +69,7 @@ export const verifyTokenAndAuthorization = (req: RequestExtend, res: Response, n
     1)Si el usuario es administrador podremos utilizar el router
 */
 
-export const verifyTokenAdmin = (req: RequestExtend, res: Response, next: NextFunction) => {
+export const verifyTokenAndAdmin = (req: RequestExtend, res: Response, next: NextFunction) => {
     verifyToken(req, res, () => { //1)
         if (req.user.isAdmin) { 
             next()

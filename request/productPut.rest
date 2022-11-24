@@ -1,0 +1,4 @@
+PUT http://localhost:3001/api/products/637ec3d3c20937dbb03b0e5f
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2U4Mjg3ODE3YTA0OTI4MGNlNzc0MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2OTIzNzAyNSwiZXhwIjoxNjY5NDk2MjI1fQ.nfl4BOR8SRJFl9IjVmZqT7DQWy6MC8bxPneR41bb1G4
+

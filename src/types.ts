@@ -33,7 +33,7 @@ export interface ProductsTypes {
     img: string,
     size: string,
     color: string,
-    price: Number
+    price: number
 };
 
 export interface ProductsReturnedObject extends Document {
@@ -42,7 +42,7 @@ export interface ProductsReturnedObject extends Document {
     img: string,
     size: string,
     color: string,
-    price: Number,
+    price: number,
     id?: string
 };
 
@@ -90,3 +90,8 @@ export interface RequestExtend extends Request {
 };
 
 //--------------
+
+
+//validator types
+
+export type Validation = Array<string>;

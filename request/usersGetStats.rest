@@ -1,0 +1,3 @@
+GET http://localhost:3001/api/users/stats
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2U4Mjg3ODE3YTA0OTI4MGNlNzc0MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2OTIzNTQ2MywiZXhwIjoxNjY5NDk0NjYzfQ.jqDu747c6IqSjmCls-tcrVnccd3L0c9sE-U8VyyA_CM

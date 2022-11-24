@@ -3,16 +3,17 @@ Inicializamos el proyecto
 1)npm init -y
 2)Instalar todas las dependencias que vamos autilizar y aclarar sus importaciones
     npm install --save-dev typescript 
-    npm install express @types/express
+    npm install --save-dev express @types/express
     npm install --save express-validator
     npm install mongoose
     npm install --save-dev eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
     npm install cors -E --save @types/cors
     npm install dotenv
     npm install --save-dev cross-env
-    npm install bcrypt --save @types/bcrypt
+    npm install bcrypt
+    npm install --save-dev @types/bcrypt 
     npm install --save-dev ts-node-dev
-    npm install 
+    npm install jsonwebtoken
     npm i --save-dev @types/jsonwebtoken
 3)importaciones de cada dependencias
 

@@ -20,7 +20,7 @@ registerRouter.post('/', validateRegister, async (req: Request, res: Response, n
         passwordHash
     });
     try {
-        const savedUser = await user.save(); //Guardamos el nuevo usuario en la base de datos
+        const savedUser: UserTypes = await user.save(); //Guardamos el nuevo usuario en la base de datos
         res.status(201).json({ //enviamos una respuesta al frontend con el estus 201(created) y el usuario creado sin el password y con el id retornados por el esquema 
             status_code: 201,
             user: savedUser
@@ -30,10 +30,10 @@ registerRouter.post('/', validateRegister, async (req: Request, res: Response, n
     }
 });
 
-registerRouter.get('/', async (_req: Request, res: Response) => {
+registerRouter.get('/', async (_req: Request, res: Response): Promise<Response> => {
     const users = await User.find({});
-    res.json({
-        users
+    return res.json({
+        data: users
     });
 });
 
