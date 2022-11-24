@@ -28,6 +28,7 @@ export const arrayValidation = (args: Validation): Array<any> => {
 };
 
 export const validateProps = (array: Validation): Array<any> => {
+
     return [
         arrayValidation(array),
         (req: Request, res: Response, next: NextFunction) => {
@@ -47,6 +48,7 @@ export const validateProps = (array: Validation): Array<any> => {
     ]
 };
 
+
 const arrayRegisterProperties: Validation = ['username', 'email', 'password']; //Creamos un array que contiene las propiedades que necesitamos validar
 const arrayLoginProperties: Validation = ['username', 'password'];
 const arrayProductProperties: Validation = ['title', 'desc', 'img', 'size', 'color', 'price'];
@@ -54,6 +56,3 @@ const arrayProductProperties: Validation = ['title', 'desc', 'img', 'size', 'col
 export const validateRegister = validateProps(arrayRegisterProperties);
 export const validateLogin = validateProps(arrayLoginProperties);
 export const validateProduct = validateProps(arrayProductProperties);
-
-
-

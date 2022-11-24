@@ -10,6 +10,7 @@ const { SECRET } = process.env;
 const loginRouter = express.Router();
 
 loginRouter.post('/', validateLogin, async (req: Request, res: Response): Promise<Response> => {
+
     const { body: { username, password } } = req;
     try {
         const user = await User.findOne({ username: username });
@@ -28,7 +29,7 @@ loginRouter.post('/', validateLogin, async (req: Request, res: Response): Promis
         };
         const token = jwt.sign(userForToken, SECRET as string, { expiresIn: "3d" }); //le pasamos el objeto con los datos para mezclar elcon la contraseña guardada en .env, y el 3 parametro es un objeto en el cual aclaramos cuantos dias sera valido el token
 
-        return res.status(200)
+         return res.status(200)
             .json({
                 status_code: 200,
                 user: {
@@ -40,6 +41,7 @@ loginRouter.post('/', validateLogin, async (req: Request, res: Response): Promis
             });
     } catch (err: any) {
         return res.status(401).send({
+
             status_code: 401,
             error: err.message
         });

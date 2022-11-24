@@ -51,7 +51,6 @@ userRouter.delete('/:id', verifyTokenAndAuthorization, async (req: RequestExtend
         next(err)
     };
 });
-
 /*
 1)Otra vez verifyTokenAndAuthorization analizara el token y cada usuario podra eliminar su cuenta y tambien el administrador podra hacer lo mismo con cualquier cuenta
 */
@@ -91,6 +90,7 @@ userRouter.get('/stats', verifyTokenAndAdmin, async (_req: RequestExtend, res: R
 //GET users for id
 
 userRouter.get('/:id', verifyTokenAndAdmin, async (req: RequestExtend, res: Response, next: NextFunction): Promise<void> => {
+
     const { params: { id } } = req;
     try {
         const user = await User.findById(id);
@@ -121,5 +121,6 @@ userRouter.get('/', verifyTokenAndAdmin, async (_req: RequestExtend, res: Respon
 });
 
 //---------------------
+
 
 export default userRouter;
