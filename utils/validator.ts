@@ -1,9 +1,16 @@
 import { NextFunction, Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
+import { Validation } from '../src/types';
 
-export const arrayValidation = (args: string[]): Array<any> => {
+export const arrayValidation = (args: Validation): Array<any> => {
     return [...args].map(prop => {
-        if (prop === "email") {
+        if (prop === 'price') {
+            return body(prop)
+                .exists().withMessage('required field')
+                .notEmpty().withMessage('should not be empty')
+                .isNumeric().withMessage('must contain a number')
+        }
+        else if (prop === "email") {
             return body(prop)
                 .exists().withMessage('required field')
                 .notEmpty().withMessage('should not be empty')
@@ -17,9 +24,11 @@ export const arrayValidation = (args: string[]): Array<any> => {
                 .isLength({ min: 3 }).withMessage('must be at least 3 chars long')
         }
     }
-)};
+    )
+};
 
-export const validateProps = (array: string[]): Array<any> => {
+export const validateProps = (array: Validation): Array<any> => {
+
     return [
         arrayValidation(array),
         (req: Request, res: Response, next: NextFunction) => {
@@ -39,11 +48,11 @@ export const validateProps = (array: string[]): Array<any> => {
     ]
 };
 
-const arrayRegisterProperties: string[] = ['username', 'email', 'password']; //Creamos un array que contiene las propiedades que necesitamos validar
-const arrayLoginProperties: string[] = ["username", "password"];
+
+const arrayRegisterProperties: Validation = ['username', 'email', 'password']; //Creamos un array que contiene las propiedades que necesitamos validar
+const arrayLoginProperties: Validation = ['username', 'password'];
+const arrayProductProperties: Validation = ['title', 'desc', 'img', 'size', 'color', 'price'];
 
 export const validateRegister = validateProps(arrayRegisterProperties);
-export const validateLogin = validateProps(arrayLoginProperties)
-
-
-
+export const validateLogin = validateProps(arrayLoginProperties);
+export const validateProduct = validateProps(arrayProductProperties);

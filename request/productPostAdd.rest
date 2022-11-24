@@ -1,0 +1,12 @@
+POST http://localhost:3001/api/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2U4Mjg3ODE3YTA0OTI4MGNlNzc0MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2OTIzNzAyNSwiZXhwIjoxNjY5NDk2MjI1fQ.nfl4BOR8SRJFl9IjVmZqT7DQWy6MC8bxPneR41bb1G4
+
+{
+    "title":"Producto 4",
+    "desc":"2213",
+    "img":"/dsadsawndasi213",
+    "size":"Talle 42",
+    "color":"#fff",
+    "price":18
+}
