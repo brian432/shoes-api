@@ -32,7 +32,7 @@ loginRouter.post('/', validateLogin, async (req: Request, res: Response): Promis
          return res.status(200)
             .json({
                 status_code: 200,
-                user: {
+                data: {
                     token,
                     username: user.username,
                     email: user.email,

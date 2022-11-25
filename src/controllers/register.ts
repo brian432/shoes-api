@@ -23,18 +23,11 @@ registerRouter.post('/', validateRegister, async (req: Request, res: Response, n
         const savedUser: UserTypes = await user.save(); //Guardamos el nuevo usuario en la base de datos
         res.status(201).json({ //enviamos una respuesta al frontend con el estus 201(created) y el usuario creado sin el password y con el id retornados por el esquema 
             status_code: 201,
-            user: savedUser
+            data: savedUser
         });
     } catch (err) {//Si ocurre un error lo enviamos al middleware encargado de los errores
         next(err)
     }
-});
-
-registerRouter.get('/', async (_req: Request, res: Response): Promise<Response> => {
-    const users = await User.find({});
-    return res.json({
-        data: users
-    });
 });
 
 export default registerRouter;
