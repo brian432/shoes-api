@@ -1,4 +1,4 @@
-POST http://localhost:3001/api/orders
+POST http://localhost:3001/api/carts
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2U4OTE1MDlkYTQ5NjVhYjYzNGQyYSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NjkyNTc4NTAsImV4cCI6MTY2OTUxNzA1MH0.ryIO8U5AN6ytepQw8CS8ogcGUeSQOEKJ__oUyj6YrzY
 
@@ -7,13 +7,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2U4OTE1M
     "products":[
         {
             "productId":"21454645",
-            "quantity":2
+            "quantity":7
         },
         {
             "productId":"dsadsadsada",
             "quantity":2
         }
-    ],
-    "amount": 100,
-    "address": "usa"
+    ]
 }

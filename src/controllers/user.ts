@@ -1,6 +1,6 @@
 import express, { NextFunction, Response } from "express";
 import { verifyTokenAndAdmin, verifyTokenAndAuthorization } from "../midlewares/verifyToken";
-import { RequestExtend, UserTypes } from "../types";
+import { RequestExtend } from "../types";
 import bcrypt from 'bcrypt';
 import User from "../models/Users";
 
@@ -45,7 +45,7 @@ userRouter.delete('/:id', verifyTokenAndAuthorization, async (req: RequestExtend
         await User.findByIdAndDelete(id);
         res.status(200).json({
             status_code: 200,
-            data: "User has been deleted..."
+            message: "User has been deleted..."
         });
     } catch (err) {
         next(err)
@@ -61,7 +61,7 @@ userRouter.get('/stats', verifyTokenAndAdmin, async (_req: RequestExtend, res: R
     const date: Date = new Date();
     const lastYear: Date = new Date(date.setFullYear(date.getFullYear() - 1)); //devuelve la fecha de hoy pero del año pasado
     try {
-        const data: UserTypes[] = await User.aggregate([
+        const data = await User.aggregate([
             {
                 $match: { createdAt: { $gte: lastYear } } //buscar en la base de datos los documentos que haya sido creados el año pasado 
             },

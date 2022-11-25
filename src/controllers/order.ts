@@ -89,7 +89,7 @@ orderRouter.get("/income", verifyTokenAndAdmin, async (_req: Request, res: Respo
 
 //GEt user orders
 
-orderRouter.get('/:userId', verifyTokenAndAuthorization, async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+orderRouter.get('/:id', verifyTokenAndAuthorization, async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     const { params: { id } } = req;
     try {
         const orders = await Order.findOne({ userId: id });
