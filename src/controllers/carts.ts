@@ -55,7 +55,7 @@ cartRouter.delete('/:id', verifyTokenAndAuthorization, async (req: Request, res:
 
 //Buscar cart por el id
 
-cartRouter.get('/:userId', verifyTokenAndAuthorization, async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+cartRouter.get('/:id', verifyTokenAndAuthorization, async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     const { params: { id } } = req;
     try {
         const cart = await Cart.findOne({ userId: id });

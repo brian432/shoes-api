@@ -1,0 +1,7 @@
+PUT http://localhost:3001/api/orders/637edb5c85f606b53d34ce17
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2U4OTE1MDlkYTQ5NjVhYjYzNGQyYSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2OTMzNDMzOSwiZXhwIjoxNjY5NTkzNTM5fQ.52fficRcxZpBFrTVUN5a11ru8RzvJP5r-hsWFgLvuPs
+
+{
+    "amount": "600"
+}
