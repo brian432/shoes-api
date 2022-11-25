@@ -2,13 +2,13 @@ import express from 'express';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
 import connect from './mongo';
-import registerRouter from './controllers/register';
+import registerRouter from './routes/register';
 import { handleErrors } from './midlewares/handleErrors';
-import loginRouter from './controllers/login';
-import userRouter from './controllers/user';
-import productRouter from './controllers/products';
-import cartRouter from './controllers/carts';
-import orderRouter from './controllers/order';
+import loginRouter from './routes/login';
+import userRouter from './routes/user';
+import productRouter from './routes/products';
+import cartRouter from './routes/carts';
+import orderRouter from './routes/order';
 
 
 const app = express();
