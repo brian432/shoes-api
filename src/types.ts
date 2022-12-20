@@ -30,19 +30,23 @@ export type UserToken = {
 export interface ProductsTypes {
     title: string,
     desc: string,
-    img: string,
-    size: string,
-    color: string,
-    price: number
+    category: string,
+    img: typeof Array,
+    size: typeof Array,
+    color: typeof Array,
+    price: number,
+    inStock: boolean
 };
 
 export interface ProductsReturnedObject extends Document {
     title: string,
     desc: string,
-    img: string,
-    size: string,
-    color: string,
+    category: string,
+    img: typeof Array,
+    size: typeof Array,
+    color: typeof Array,
     price: number,
+    inStock: boolean,
     id?: string
 };
 
@@ -86,7 +90,7 @@ export interface OrderTypes extends CartTypes {
 
 //verifyToken
 export interface RequestExtend extends Request {
-    user?: any 
+    user?: any
 };
 
 //--------------

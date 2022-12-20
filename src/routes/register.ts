@@ -1,12 +1,12 @@
 import User from '../models/Users';
-import express, { NextFunction, Request, Response } from 'express';
+import express, { Request, Response } from 'express';
 import { UserTypes } from '../types';
 import bcrypt from 'bcrypt';
 import { validateRegister} from '../../utils/validator';
 
 const registerRouter = express.Router();
 
-registerRouter.post('/', validateRegister, async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+registerRouter.post('/', validateRegister, async (req: Request, res: Response): Promise<void> => {
     const { body: { username, email, password } } = req;
 
     //bcrypt
@@ -26,7 +26,10 @@ registerRouter.post('/', validateRegister, async (req: Request, res: Response, n
             data: savedUser
         });
     } catch (err) {//Si ocurre un error lo enviamos al middleware encargado de los errores
-        next(err)
+        res.status(400).send({
+            status_code:400,
+            error: "duplicate key error"
+        })
     }
 });
 

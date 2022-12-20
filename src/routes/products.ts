@@ -14,7 +14,7 @@ productRouter.post('/', validateProduct, verifyTokenAndAdmin, async (req: Reques
         const savedProduct: ProductsTypes = await newProduct.save()
         res.status(200).json({
             status_code:200,
-            product: savedProduct
+            data: savedProduct
         });
     }catch(err){
         next(err)
@@ -31,7 +31,7 @@ productRouter.put('/:id', verifyTokenAndAdmin, async (req: Request, res: Respons
         }, { new: true });
         res.status(200).json({
             status_code: 200,
-            product: updateProduct
+            data: updateProduct
         });
     } catch (err) {
         next(err)
@@ -46,7 +46,7 @@ productRouter.delete('/:id', verifyTokenAndAdmin, async (req: Request, res: Resp
         await Product.findByIdAndDelete(id);
         res.status(200).json({
             status_code: 200,
-            product: "Product has been deleted..."
+            data: "Product has been deleted..."
         });
     } catch (err) {
         next(err)
@@ -61,7 +61,7 @@ productRouter.get('/:id', async (req: Request, res: Response, next: NextFunction
         const product = await Product.findById(id);
         res.status(200).json({
             status_code: 200,
-            product: product
+            data: product
         });
     } catch (err) {
         next(err)
@@ -75,7 +75,7 @@ productRouter.get('/', async (_req: Request, res: Response, next: NextFunction):
         const products = await Product.find();
         res.status(200).json({
             status_code: 200,
-            products: products
+            data: products
         });
     } catch (err) {
         next(err)

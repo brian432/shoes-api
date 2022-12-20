@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
-import { body, validationResult } from 'express-validator';
+import { body, ValidationChain, validationResult } from 'express-validator';
 import { Validation } from '../src/types';
 
-export const arrayValidation = (args: Validation): Array<any> => {
+export const arrayValidation = (args: Validation): Array<ValidationChain> => {
     return [...args].map(prop => {
         if (prop === 'price') {
             return body(prop)
@@ -16,7 +16,19 @@ export const arrayValidation = (args: Validation): Array<any> => {
                 .notEmpty().withMessage('should not be empty')
                 .isString().withMessage('must contain a string')
                 .isEmail().withMessage('requires a valid email')
-        } else {
+        } else if (prop === "color" || prop === "size" || prop === "img") {
+            return body(prop)
+                .exists().withMessage('required field')
+                .notEmpty().withMessage('should not be empty')
+                .isArray().withMessage('must contain a array')
+                .isLength({ min: 2 }).withMessage('must be at least 2 chars long')
+        } else if (prop === "inStock") {
+            return body(prop)
+                .exists().withMessage('required field')
+                .notEmpty().withMessage('should not be empty')
+                .isBoolean().withMessage('boolean required')
+        }
+        else {
             return body(prop) //mapeamos el array y agregamos las validaciones con sus respectivos mensajes
                 .exists().withMessage('required field')
                 .notEmpty().withMessage('should not be empty')
@@ -28,7 +40,6 @@ export const arrayValidation = (args: Validation): Array<any> => {
 };
 
 export const validateProps = (array: Validation): Array<any> => {
-
     return [
         arrayValidation(array),
         (req: Request, res: Response, next: NextFunction) => {
@@ -41,7 +52,7 @@ export const validateProps = (array: Validation): Array<any> => {
             } catch (err: any) {
                 return res.status(400).send({
                     status_code: 400,
-                    errors: err.mapped()
+                    error: err.mapped()
                 })
             }
         }
@@ -51,7 +62,7 @@ export const validateProps = (array: Validation): Array<any> => {
 
 const arrayRegisterProperties: Validation = ['username', 'email', 'password']; //Creamos un array que contiene las propiedades que necesitamos validar
 const arrayLoginProperties: Validation = ['username', 'password'];
-const arrayProductProperties: Validation = ['title', 'desc', 'img', 'size', 'color', 'price'];
+const arrayProductProperties: Validation = ['title', 'desc', 'category', 'img', 'size', 'color', 'price', 'inStock'];
 
 export const validateRegister = validateProps(arrayRegisterProperties);
 export const validateLogin = validateProps(arrayLoginProperties);

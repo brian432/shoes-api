@@ -41,7 +41,6 @@ loginRouter.post('/', validateLogin, async (req: Request, res: Response): Promis
             });
     } catch (err: any) {
         return res.status(401).send({
-
             status_code: 401,
             error: err.message
         });
