@@ -9,6 +9,7 @@ import userRouter from './routes/user';
 import productRouter from './routes/products';
 import cartRouter from './routes/carts';
 import orderRouter from './routes/order';
+import stripeRouter from './routes/stripe';
 
 
 const app = express();
@@ -24,6 +25,7 @@ app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/carts', cartRouter);
 app.use('/api/orders', orderRouter);
+app.use('/api/payment', stripeRouter);
 
 
 app.use(handleErrors);

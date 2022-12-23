@@ -2,18 +2,20 @@ import { Schema, model } from "mongoose";
 import { CartTypes, CartReturnedObject } from "../types";
 
 const CartSchema = new Schema<CartTypes>({
-    userId: { type: String, required: true },
-    products: [
-        {
-            productId: {
-                type: String
-            },
-            quantity: {
-                type: Number,
-                default: 1
-            }
-        }
-    ]
+    title: String,
+    price: Number,
+    productId: String,
+    color: String,
+    quantity: {
+        type: Number,
+        default: 1
+    },
+    img: String,
+    size: String,
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 CartSchema.set('toJSON', {

@@ -26,7 +26,7 @@ export const verifyToken = (req: RequestExtend, res: Response, next: FuncNext) =
                     error: "Token missing or invalid!"
                 });
             };
-            console.log(user)
+
             req.user = user; //3
             next();                                        
         });

@@ -2,18 +2,18 @@ import { Schema, model } from "mongoose";
 import { OrderTypes, OrderReturnedObject } from "../types";
 
 const OrderSchema = new Schema<OrderTypes>({
-    userId: { type: String, required: true },
-    products: [
-        {
-            productId: {
-                type: String
-            },
-            quantity: {
-                type: Number,
-                default: 1
-            }
-        }
-    ],
+    title: String,
+    productId: String,
+    quantity: {
+        type: Number,
+        default: 1
+    },
+    color: String,
+    img: String,
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     amount: { type: String, required: true },
     address: { type: Object, required: true },
     status: { type: String, default: "pending" }

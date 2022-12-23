@@ -1,25 +1,27 @@
-import { Document, Types } from "mongoose";
+import { Document, ObjectId, Types } from "mongoose";
 import { Request } from "express";
 
 //UserTypes
 
 export interface UserTypes {
-    username: string,
-    email: string,
-    passwordHash: string,
+    username: string
+    email: string
+    passwordHash: string
     isAdmin?: boolean
+    carts?: ObjectId[]
 };
 
 export interface UserReturnedObject extends Document {
-    username: string,
-    email: string,
-    passwordHash: string | undefined,
-    isAdmin: boolean,
+    username: string
+    email: string
+    passwordHash: string | undefined
+    isAdmin: boolean
     id?: string
+    carts?: ObjectId[]
 };
 
 export type UserToken = {
-    id: Types.ObjectId,
+    id: Types.ObjectId
     isAdmin?: boolean
 };
 
@@ -28,25 +30,25 @@ export type UserToken = {
 //Product types
 
 export interface ProductsTypes {
-    title: string,
-    desc: string,
-    category: string,
-    img: typeof Array,
-    size: typeof Array,
-    color: typeof Array,
-    price: number,
+    title: string
+    desc: string
+    category: string
+    img: typeof Array
+    size: typeof Array
+    color: typeof Array
+    price: number
     inStock: boolean
 };
 
 export interface ProductsReturnedObject extends Document {
-    title: string,
-    desc: string,
-    category: string,
-    img: typeof Array,
-    size: typeof Array,
-    color: typeof Array,
-    price: number,
-    inStock: boolean,
+    title: string
+    desc: string
+    category: string
+    img: typeof Array
+    size: typeof Array
+    color: typeof Array
+    price: number
+    inStock: boolean
     id?: string
 };
 
@@ -54,28 +56,45 @@ export interface ProductsReturnedObject extends Document {
 
 //Cart types
 
-interface ProductArray {
-    productId: string,
-    quantity: number
-};
-
 export interface CartReturnedObject extends Document {
-    userId: string,
-    products: Array<ProductArray>,
+    title: string
+    price: number
+    productId: string
+    quantity: number
+    color: string
+    img: string
+    size: string
+    user: ObjectId
     id?: string
 }
 
 export interface CartTypes {
-    userId: string,
-    products: Array<ProductArray>
+    title: string
+    price: number
+    productId: string
+    quantity: number
+    color: string
+    img: string
+    size: string
+    user: ObjectId
+    _id: ObjectId
 };
+
+export interface RequestMasPropUser extends Request {
+    user?: {
+        id: string
+        isAdmin: boolean
+        iat: number
+        exp: number
+    }
+}
 
 //-------------------------------
 
 //Order types
 export interface OrderReturnedObject extends Document {
     userId: string,
-    products: Array<ProductArray>,
+    products: typeof Array,
     amount: string,
     address: Object,
     status: string

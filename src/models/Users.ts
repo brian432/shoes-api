@@ -18,7 +18,13 @@ const UserSchema = new Schema<UserTypes>({ //Creamos el esquema con el tipo User
     isAdmin: {
         type: Boolean,
         default: false
-    }
+    },
+    carts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Cart'
+        }
+    ]
 }, { timestamps: true });
 
 UserSchema.set('toJSON', { //Al retornar el json luego de agregar un usuario, modificamos este retorno eliminando el password y propiedades que no necesitamos devolver
