@@ -1,11 +1,11 @@
 POST http://localhost:3001/api/products
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2U4OTE1MDlkYTQ5NjVhYjYzNGQyYSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MTQ3ODA5MiwiZXhwIjoxNjcxNzM3MjkyfQ.exvdMnw1A-Obr31TCsgZrZrcRWRuCAF055nRcp8qqIs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWI2OTJlMDFjZGFkMzM2ODZhZjU5MiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MjE3ODA1NCwiZXhwIjoxNjcyNDM3MjU0fQ.-hJXfsHKpREuWcDByTCTBWmJzhynA6oVSTqWXT2DBQE
 
 {
     "title":"Producto 9",
     "desc":"2213",
-    "category": "women",
+    "category": "men",
     "img":[
         "/dsadsadasdsa",
         "/dhsajdghasjd",

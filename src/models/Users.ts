@@ -24,6 +24,12 @@ const UserSchema = new Schema<UserTypes>({ //Creamos el esquema con el tipo User
             type: Schema.Types.ObjectId,
             ref: 'Cart'
         }
+    ],
+    orders: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Order'
+        }
     ]
 }, { timestamps: true });
 

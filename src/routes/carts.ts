@@ -72,13 +72,33 @@ cartRouter.delete('/:id', verifyToken, async (req: Request, res: Response, next:
     };
 });
 
+cartRouter.delete('/', verifyToken, async (req: RequestMasPropUser, res: Response, next: NextFunction): Promise<void> => {
+    const { body: { productsIds } } = req;
+    if (req.user !== undefined) {
+        try {
+            await User.findByIdAndUpdate(req.user.id, {$set: { carts: [] }})
+            await Cart.deleteMany({
+                _id: {
+                    $in: productsIds
+                }
+            });
+            res.status(204).json({
+                status_code: 204
+            })
+
+        } catch (err) {
+            next(err)
+        };
+    }
+});
+
 //buscar todas las cartas del usuario
 
 cartRouter.get('/', verifyToken, async (req: RequestMasPropUser, res: Response, next: NextFunction): Promise<void> => {
     if (req.user !== undefined) {
         const id = req.user.id;
         try {
-            const user = await User.findById(id).populate('carts', { title: 1, quantity: 1, color: 1, img: 1, id: 1, size: 1, price: 1, productId:1 })
+            const user = await User.findById(id).populate('carts', { title: 1, quantity: 1, color: 1, img: 1, id: 1, size: 1, price: 1, productId: 1 })
             res.status(200).json({
                 status_code: 200,
                 data: user?.carts

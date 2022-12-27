@@ -9,7 +9,7 @@ const stripe = new Stripe(stripeKey as string, {
     apiVersion: '2022-11-15',
 });
 
-stripeRouter.post('/', verifyToken, async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+stripeRouter.post('/payment', verifyToken, async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try{
         const stripeCharges = await stripe.charges.create({
             source: req.body.tokenId,

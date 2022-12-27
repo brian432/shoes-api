@@ -9,6 +9,7 @@ export interface UserTypes {
     passwordHash: string
     isAdmin?: boolean
     carts?: ObjectId[]
+    orders?: ObjectId[]
 };
 
 export interface UserReturnedObject extends Document {
@@ -93,16 +94,28 @@ export interface RequestMasPropUser extends Request {
 
 //Order types
 export interface OrderReturnedObject extends Document {
-    userId: string,
-    products: typeof Array,
-    amount: string,
-    address: Object,
+    products: ProductOrder[]
+    user: ObjectId
+    amount: string
+    address: Object
     status: string
 }
-export interface OrderTypes extends CartTypes {
-    amount: string,
-    address: Object,
+
+export type ProductOrder = {
+    title: string
+    productId: string
+    color: string
+    img: string
+    size: number
+    quantity: number
+}
+export interface OrderTypes {
+    products: ProductOrder[]
+    user: ObjectId
+    amount: number
+    address: Object
     status: string
+    _id: ObjectId
 };
 
 
