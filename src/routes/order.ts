@@ -18,7 +18,7 @@ orderRouter.post('/', verifyToken, async (req: RequestMasPropUser, res: Response
             const user = await User.findById(req.user.id);
             const savedOrder: OrderTypes = await newOrder.save();
 
-            if (user?.orders != undefined) {
+            if (user?.orders !== undefined) {
                 user.orders = user.orders.concat(savedOrder._id)
             }
             await user?.save();

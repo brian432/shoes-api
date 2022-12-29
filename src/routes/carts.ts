@@ -18,7 +18,7 @@ cartRouter.post('/', verifyToken, async (req: RequestMasPropUser, res: Response,
             const user = await User.findById(req.user.id);
             const savedCart: CartTypes = await newCart.save()
 
-            if (user?.carts != undefined) {
+            if (user?.carts !== undefined) {
                 user.carts = user.carts.concat(savedCart._id)
             }
             await user?.save();
